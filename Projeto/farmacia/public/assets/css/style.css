@@ -1,0 +1,419 @@
+
+.navbar-toggler {
+  position:relative;
+  left: 1px;
+  right:1px;
+  margin: 0 auto;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#logo {
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+/*
+#divBusca{
+    margin-top: 15px;
+    margin-left: 50px;
+    padding-left: 15px;
+    background-color:#F2F0EE;
+    border:hidden;
+    border-radius:5px;
+    width:400px;
+    height: 40px;
+  }
+  */
+   /*
+  #txtBusca {
+    background-color:transparent;
+    padding-left:5px;
+    font-style:italic;
+    font-size:18px;
+
+    height:32px;
+    width:350px;
+  }
+*/
+/*
+  #txtBusca {
+    margin-top: 15px;
+    margin-left: 50px;
+    padding-left: 15px;
+    background-color:#F2F0EE;
+    border:hidden;
+    border-radius:5px;
+    width:400px;
+    height: 40px;
+  }
+  
+  #topo {
+    padding-top: 10px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #F2F0EE;
+  }
+
+  #menu {
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
+
+  #nav-principal, ul {
+    margin-left: 20px;
+  }
+*/
+  #home {
+    margin-top: -18px;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  #home img {
+    height:350px;
+    width:100%;
+  }
+
+  #produto:hover {
+    border-radius: 6px;
+    border: solid 1px;
+  }
+
+  
+/*
+  #cesta {
+    margin-top: -5px;
+    margin-left: 50px;
+  }
+
+  #cesta button {
+    border: none;
+    background-color: #fff;
+  }
+
+  #cesta p {
+    font-size: 8pt;
+    margin-bottom: 0;
+  }
+  
+  #login {
+    margin-left: 100px;
+  }
+
+  #login p {
+    padding-top: 10px;
+    font-size: 8pt;
+    text-align: left;
+  }
+
+  #cadastrese {
+    padding-top:0px;
+  }
+
+  #log {
+    font-size: small;
+    font-weight: bold;
+    padding-bottom:0px;
+  }
+
+  #login img {
+    float: left;
+    margin-right: -10px;
+    padding-top: 10px;
+  }
+
+  #whatsapp {
+    margin-left: 50px;
+  }
+
+  p {
+    padding-top: 5px;
+    float: right;
+  }
+
+  #subtitulo {
+    text-align: center;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #F2F0EE;
+  }
+
+  #menuLateral {
+    margin-left: -20px;
+    margin-right: 25px
+  }
+
+  #menuLateral h1 {
+    text-align: center;
+    font-size: x-large;
+  }
+
+  #bodyProduto {
+    margin-top: 20px;
+    padding-top: 10px;
+    margin-left: 45px;;
+    margin-right: 45px;
+    height: auto;
+  }
+
+  #linkProduto {
+    text-decoration: none;
+  }
+
+
+  a:link, a:link:hover, a:hover, a:visited, a:focus, a:active, p { 
+    text-decoration: none; 
+    color: inherit; 
+  }
+
+  #botao {
+    color: white;
+  }
+
+  #bodyProduto div {  
+    height: 320px;
+    min-height: 300px;
+    max-height: 320px;
+  }
+
+  #bodyProduto:hover {
+    margin-top: 20px;
+    padding-bottom: 5px;
+    border-radius: 6px;
+    border: solid 1px;
+    height: 110%;
+  }
+
+  #bodyProduto p {
+    float: left;
+  }
+
+  #bodyProduto img {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    height: 200px;
+  }
+
+  #bodyProduto h1 {
+    font-size: x-large;
+  }
+
+  footer {
+    margin-top: 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #F2F0EE;
+  }
+
+  #rodape {
+    float: right;
+  }
+*/
+  #cadastrar {
+    border: solid gray 2px;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  #formulario {
+    padding: 0;
+    margin: 0;
+    border: solid gray 1px;
+    border-radius: 5px;
+    background-color: #fff
+    
+  }
+
+  #formulario input {
+    background-color: rgb(241, 241, 241);
+  }
+
+  #formGenerico {
+    border: solid 1px;
+    border-radius: 5px;
+    margin-left: 15px;
+    padding-left: 10px;
+  }
+
+  #nao {
+    margin-left: 10px;
+  }
+
+  #precoPromocional {
+    margin-top: -20px;
+  }
+
+  #categoria {
+    margin-left: 5px;
+  }
+
+  #formCategoria {
+    margin-left: 15px;
+  }
+
+  #paginaProduto {
+    margin-top: 30px;
+  }
+/*
+  #pagProduto p {
+    float: right;
+    font-size: xx-large;
+    max-width: 550px;
+    margin-bottom: 50px;
+  }
+
+  #tabelaDireita {
+    float: right;
+    width: 550px;
+    height: auto;
+  }
+
+  #tabelaDireita h4, h1 {
+    width: fit-content;
+  }
+
+  #tabelaDireita h4 {
+    text-decoration: line-through;
+  }
+
+  #quantidade {
+    margin-top: -50px;
+    padding-right: 100px;
+    float: right;
+    padding-bottom: 30px;
+  }
+
+  #quantidade input {
+    font-size: medium;
+    font-weight: bold;
+  }
+
+  #imagem {
+    float: left;
+    width: 500px;
+    height: auto;
+    text-align: center;
+
+  }
+
+  #quant {
+    width: 50px;
+    text-align: center;
+  }
+
+  #quantCesta {
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    margin-top: 20px;
+    margin-left: -15px;
+    float: right;
+    border-radius: 10px;
+  }
+
+  #indice h5{
+    margin-top: 10px;
+    text-align: center;
+    font-size: smaller;
+  }
+
+  #carrinho {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #F2F0EE;
+  }
+
+  #carrinho img {
+    float: left;
+  }
+
+  #carrinho p {
+    float: none;
+    margin-top: 35px;
+    padding-left: 110px;
+    font-weight: 500;
+  }
+
+  #carrinho h4 {
+    text-align: center;
+    font-size: medium;
+    text-decoration: line-through;
+    color: gray;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  #carrinho h1 {
+    text-align: center;
+    font-size: 16pt;
+  }
+
+  #quantidadeCarrinho {
+    margin-top: 35px;
+    margin-left: 15px;
+    width: 25px;
+    height: 25px;
+  }
+
+  #quantidadeCarrinho input {
+    padding-top: 0;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  input[name="total"] {
+    border: none;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: -20px;
+  }
+
+  #lixeira {
+    text-align: center;
+    padding-top: 35px;
+    
+  }
+
+  #rodape {
+    margin-top: 20px;
+    background-color: aliceblue;
+    
+  }
+*/
+  #lista {
+    /*margin-left: 150px;*/
+    /*padding-top: 20px;*/
+    padding-left: 20px;
+    /*list-style: none;*/
+    font-size: 100%;
+    
+  }
+
+  #redesSociais {
+    /*padding-top: 20px;*/
+    text-align: center;
+    /*margin-left: auto;*/
+    padding-left: 40px;
+    
+  }
+
+  #redesSociais i {
+    padding-left: 15px;
+  }
+/*
+  #total {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+*/
+
+  
+

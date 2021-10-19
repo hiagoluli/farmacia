@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>FarmaCia</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+        <link rel="manifest" href="assets/site.webmanifest">
+        <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="assets/favicon.ico">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-config" content="assets/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+
+        <script>
+            function processo(quant) {
+                var value = parseInt(document.getElementById("quant").value);
+                value+=quant;
+                if(value < 1){
+                    document.getElementById("quant").value = 1;
+                }else{
+                    document.getElementById("quant").value = value;
+                }
+                
+            }
+
+            function botaoComprar() {
+                $(function(){              
+                    var obj = document.getElementById('paginaProduto');
+                    var form = $(obj);         
+                    var dados = new FormData(obj);
+                                    
+                    $.ajax({
+                        url: '/addCarrinho',
+                        type: form.attr('method'),
+                        dataType: "text",
+                        data: dados,
+                        processData: false,
+                        cache: false,
+                        contentType: false
+                    });
+                    window.location = "/carrinho";
+                });
+            }
+
+            function botaoAddProduto(iden) {
+                alert(iden);
+
+                document.getElementById('id').value = iden;
+                $(function(){              
+                    var obj = document.getElementById('paginaProduto');
+                    var form = $(obj);         
+                    var dados = new FormData(obj);
+                                    
+                    $.ajax({
+                        url: '/addCarrinho',
+                        type: form.attr('method'),
+                        dataType: "text",
+                        data: dados,
+                        processData: false,
+                        cache: false,
+                        contentType: false
+                    });
+                });
+            }
+        </script>
+    </head>
+
+    <body style="min-width:372px;">
+        <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <nav id="topo" class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm mb-3 col-12">
+            <div class="container col-8 col-sm-8 col-md-8 col-lg-11 col-xl-11">        
+                <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!--<a class="navbar-brand" href=""><strong>FarmaVida</a>-->
+                <a class="navbar-brand mr-auto" href="/">
+                    <img src="/assets/logo1.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                    <strong>FarmaCia
+                </a>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class=nav-item>
+                            <a href="/medicamentos" class="nav-link text-light">Medicamentos</a>
+                        </li>
+                        <li class=nav-item>
+                            <a href="/cosmeticos" class="nav-link text-light">Cosméticos</a>
+                        </li>
+                        <li class=nav-item>
+                            <a href="/higiene" class="nav-link text-light">Higíene</a>
+                        </li>
+                        <li class=nav-item>
+                            <a href="/saude" class="nav-link text-light">Saúde</a>
+                        </li>
+                        <li class=nav-item>
+                            <a href="/infantil" class="nav-link text-light">Infantil</a>
+                        </li>
+                        <li class=nav-item>
+                            <a href="/" class="nav-link text-light">Promoções</a>
+                        </li>
+                    </ul>
+                    <div class="align-self-end">
+                        <ul class="navbar-nav">
+                            <li class=nav-item>
+                                <a href="/cadastrarUsuario" class="nav-link text-light">Cadastrar</a>
+                            </li>
+                            <li class=nav-item>
+                                <a href="#" class="nav-link text-light">Entrar</a>
+                            </li>                      
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="nav-link text-white mr-2">
+                <svg class="bi" width="24" height="24" fill="currentColor">
+                    <use xlink:href="assets/bi.svg#cart3"/>
+                </svg>
+            </a>    
+        </nav>
+
+        <section id="produtos">
+            <div class="container">
+                <div class="row">
+                    <?php foreach($this->view->produtos as $id => $produto) { ?>
+                        <form id="paginaProduto" name="paginaProduto" class="col-sm-12" action=""  method="post">
+                            <div name="pagProduto" id="pagProduto" class="col-sm-12">
+                                <div id="imagem" class="ml-5">
+                                    <img src="../assets/<?=$produto['imagem'] ?>" width="300px">
+                                </div>
+                                <div id="tabelaDireita">
+                                    <p><?=$produto['descricao'] ?></p>
+                                    <h4 style="text-decoration:line-through">R$ <?=str_replace('.',',',$produto['preco']) ?></h4>
+                                    <h1 style="margin-top:-10px;">R$ <?=str_replace('.',',',$produto['preco_promocional']) ?></h1>
+                                    <div id="quantidade"class="btn-group" role="group" aria-label="Exemplo básico">
+                                        <label style="padding-top:7px;font-size:18px;">Quantidade: &nbsp; </label> 
+                                        <input class="btn btn-outline-dark" type="button" id="plus" value='-' onclick="processo(-1)" />
+                                        <input id="quant" name="quantidade" class="text text-center" size="1" type="text" value="1" maxlength="5" />
+                                        <input type="hidden" id="id" name="id" class="form-control" value="<?= $produto['id'] ?>">
+                                        <input class="btn btn-outline-dark" type="button" id="minus" value='+' onclick="processo(1)">
+                                    </div>
+                                    <button type="submit" onclick="botaoComprar()" class="btn btn-primary btn-block mt-2">Comprar</button>
+                                    </form>
+                                    <button type="submit" onclick="botaoAddProduto(<?= $produto['id'] ?>)" class="btn btn-outline-dark btn-block">Adicionar a cesta</button>
+                                </div>
+                            </div>
+                    <?php } ?>
+                </div>
+            </div>           
+        </section>
+        <footer class="border-top text-muted bg-dark mt-2">
+            <div id="rodape" class="container col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div id="footer" class="row py-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <ul id="lista" class="list-inline col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <li>
+                            <a href="" class="list-inline-item text-muted text-nowrap">Formas de Pagamento</a>
+                        </li>
+                        <li>
+                            <a href="" class="list-inline-item text-muted">Vacinas</a>
+                        </li>
+                        <li>
+                            <a href="" class="list-inline-item text-muted text-nowrap">Nossa História</a>
+                        </li>
+                        <li>
+                            <a href="/cadastrarProduto" class="list-inline-item text-muted text-nowrap">Area do Administrador</a>
+                        </li>
+                    </ul>
+                    <div id="redesSociais" class="text-center text-nowrap col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <h5>Redes Sociais</h5>
+                        <i class="fab fa-facebook fa-2x"></i>
+                        <i class="fab fa-instagram fa-2x"></i>
+                        <i class="fab fa-twitter-square fa-2x"></i>
+                    </div>              
+                </div>
+            </div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+<script>
+    
+    function liberarOpcao(){
+        if (document.getElementById('liberar').checked == true){
+            document.getElementById('pricePromo').disabled = ""
+            <?= $this->view->produto['promocao'] = true ?>
+        }
+    }
+
+</script>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<div class="container">
+    <div id="cadastrar" class="form-group justify-content-center mt-2 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="card-body">
+            <div class="row">
+                <div class="text-sm-12">
+                    <h2>Cadastrar produto</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="formulario" class="col-12">
+                    <form action="/registrarProduto" method="post" enctype="multipart/form-data">
+                        <div class="form-group col-12 mt-2">
+                            <input type="text" value='<?= $this->view->produto['descricao'] ?>' name="descricao" class="form-control" placeholder="Descrição do Produto">
+                        </div>
+                        
+                        <div class="form-group col-12 col-sm-6 col-md-8 col-lg-4 col-xl-4">
+                            <input type="number" step="0.01" value='<?= $this->view->produto['preco'] ?>' name="preco" class="form-control" placeholder="Preço">
+                        </div>
+
+                        <div class="form-group col-12 col-sm-6 col-md-8 col-lg-4 col-xl-4">
+                            <input type="number" value='<?= $this->view->produto['quantidade'] ?>' name="quantidade" class="form-control" placeholder="Quantidade">
+                        </div>
+
+                        <div class="form-group">
+                            <label id="formCategoria" for="categoria">Categoria:</label>
+                            <select name="categoria" id="categoria">
+                                <option value='<?= $this->view->produto['categoria'] = 'Medicamentos' ?>'>Medicamentos</option>
+                                <option value='<?= $this->view->produto['categoria'] = 'Cosmeticos' ?>'>Cosméticos</option>
+                                <option value='<?= $this->view->produto['categoria'] = 'Higiene' ?>'>Higíene</option>
+                                <option value='<?= $this->view->produto['categoria'] = 'Saude' ?>'>Saúde</option>
+                                <option value='<?= $this->view->produto['categoria'] = 'Infantil' ?>'>Infantil</option>
+                            </select>
+                        </div>
+
+                        <div id="formGenerico" class="form-group col-11 col-sm-11 col-md-11 col-lg-4 col-xl-4">
+                            <h5>Genérico</h5>
+                            <input type="radio" id="sim" name="generico" value='<?= $this->view->produto['generico'] = true ?>'>
+                            <label for="generico">sim</label>
+                            <input type="radio" id="nao" name="generico" value='<?= $this->view->produto['generico'] = 0 ?>'>
+                            <label for="generico">não</label>
+                        </div>
+
+
+                        <div class="form-group ml-3">
+                            <input onclick="liberarOpcao()" type="radio" id="liberar" name="promocao" value='<?= $this->view->produto['promocao'] ?>'>
+                            <label for="promocao">Promoção</label>
+                        </div>
+
+                        <div id="precoPromocional" class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <input id="pricePromo" type="number" step="0.01" value='<?= $this->view->produto['precoPromocional'] ?>' name="precoPromocional" class="form-control" placeholder="Preço Promocional" disabled>
+                        </div>
+
+                        
+                        <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            Imagem do Produto<br>
+                            <input type="file" name="imagem" id="imagem" class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" />
+                            <br></br>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                        <?php
+                            if($this->view->erroCadastro) { ?>
+                                <small class="form-text text-danger">Erro ao tentar realizar o cadastro!</small>
+                            <?php } ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

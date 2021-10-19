@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>FarmaVida</title>
+
+    <script>
+        function processo(quant, id, precoUnidade) {
+            var a = document.getElementById(id).id;
+            var b = "total";
+            var c = a.concat(b);
+            var total;
+            var value = parseInt(document.getElementById(id).value);
+            value+=quant;
+
+            total = value * precoUnidade;
+            document.getElementById(c).value = total;
+            if(value < 1){
+                document.getElementById(id).value = 1;
+            }else{
+                document.getElementById(id).value = value;
+                
+            }
+        }
+    </script>
+
+
+  </head>
+    <body>
+        <header>
+            <nav id="topo" class="col-12">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div id="logo" class="float-left">
+                            <a href="/">
+                                <img src="../assets/logo.png" width="142">
+                            </a>
+                        </div>
+
+                        <div class="float-left" id="divBusca">
+                            <input type="text" id="txtBusca" placeholder="Buscar..."/>
+                                <i class="fas fa-search"></i>
+                        </div>
+                    
+                        <div class="float-none" id="whatsapp">
+                            <img src="../assets/whatsapp.png" width="60">
+                            <p>Whatsapp<br> (44) 9 0000-0000</p>
+                        </div>
+
+                        <div class="float-right" id="cesta">
+                            <button>
+                                <p>Minha Cesta</p><br>
+                                <img src="../assets/cesta.png" width="40">
+                            </button>
+                        </div>
+
+                        <div class="float-right" id="entrega">
+                            <p>Entrega grátis<br>em _________</p>
+                            <img src="../assets/motoboy.png" width="50">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section id="produtos">
+            <div class="container">
+                <div class="row">
+                    <div id="subtitulo" class="col-sm-12">
+                        <h5>Minha Cesta</h5>
+                    </div>
+                </div>
+
+                <div id="indice" class="row">
+                    <div class="col-sm-6">
+                        <h5>Produto</h5>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>Preço Unit.</h5>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>Quantidade</h5>
+                    </div>
+                    <div class="col-sm-1">
+                        <h5>Total</h5>
+                    </div>
+                    <div class="col-sm-1">
+                        
+                    </div>
+                </div>
+
+
+                <?php foreach($this->view->itens as $id => $carrinho) { ?>
+                    <form id="carrinho" name="carrinho" class="col-sm-12" action="/produto" method="post">
+                        <div id="test2" class="row">
+                            <div class="col-sm-6">
+                                <img src="../assets/<?=$carrinho['imagem'] ?>" width="100" height="100">
+                                <p><?=$carrinho['descricao'] ?></p>
+                            </div>
+                            <div class="col-sm-2">
+                                <h4>R$ <?=str_replace('.',',',$carrinho['preco']) ?></h4>
+                                <h1 class="col-12">R$ <?=str_replace('.',',',$carrinho['preco_promocional']) ?></h1>  
+                            </div>
+                            <div id="test" class="col-sm-2">
+                                <div id="quantidadeCarrinho" class="btn-group col-sm-12" role="group" aria-label="Exemplo básico"> 
+                                    <input class="btn btn-outline-dark" type="button" id="plus" value='-' onclick="processo(-1)" />
+                                    <input id="<?=$carrinho['id']?>" name="quant" class="text" size="1" type="text" value="<?=$carrinho['quantidade'] ?>" maxlength="5" />
+                                    <input type="hidden" id="<?=$carrinho['id']?>" name="quantidade" class="form-control" value="">
+                                    <input class="btn btn-outline-dark" type="button" id="minus" value='+' onclick="processo(1,<?=$carrinho['id']?>, <?=$carrinho['preco_promocional']?>)">
+                                </div>                  
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="col-sm-12">
+                                    <input id="<?=$carrinho['id']?>total" name="total" class="text" size="5" type="text" value="R$ <?=str_replace('.',',',$carrinho['preco_promocional']) ?>" />
+                                </div>
+                            </div>
+                            <div id="lixeira" class="col-sm-1">
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </div>
+                    </form>
+                <?php } ?>
+            </div>
+        </section>
+        <section class="col-sm-11">
+            <div class="col-sm-2 float-right">
+                <p id="total">Total: R$ <?= str_replace('.',',',$this->view->total['total']) ?></p>
+                <button name="abc" class="btn btn-primary btn-block">Finalizar compra</button>
+            </div>
+        </section>
+        <footer>
+        <div id="rodape" class="container col-sm-12">
+            <div id="footer" class="row col-sm-11">
+                <ul id="lista" class="col-sm-3">
+                    <li>
+                        <a href="">Formas de Pagamento</a>
+                    </li>
+                    <li>
+                        <a href="">Vacinas</a>
+                    </li>
+                    <li>
+                        <a href="">Nossa História</a>
+                    </li>
+                    <li>
+                        <a href="/cadastrarProduto">Area do Administrador</a>
+                    </li>
+                </ul>
+                <div id="redesSociais" class="col-sm-3">
+                    <h5>Redes Sociais</h5>
+                    <i class="fab fa-facebook fa-2x"></i>
+                    <i class="fab fa-instagram fa-2x"></i>
+                    <i class="fab fa-twitter-square fa-2x"></i>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+    </body>
+</html>
+
+        
