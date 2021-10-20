@@ -1,2 +1,2 @@
 # farmacia
- Aprendizado fullstack(html5,JS,css,php,MySql,bootstrap)
+ Aprendizado fullstack(HTML5,JavaScript,CSS,PHP,MySql,Bootstrap)
